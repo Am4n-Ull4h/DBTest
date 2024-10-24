@@ -10,7 +10,7 @@ try {
   if (!admin.apps.length) {
     // const serviceAccount = require(
     // );
-
+    
     admin.initializeApp({
       credential: admin.credential.cert({
         "type": process.env.FIREBASE_PROJECT_TYPE,
