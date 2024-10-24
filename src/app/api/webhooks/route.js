@@ -8,23 +8,23 @@ const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 // Ensure Firebase Admin is initialized
 try {
   if (!admin.apps.length) {
-    const serviceAccount = require({
-      "type": process.env.FIREBASE_PROJECT_TYPE,
-      "project_id": process.env.FIREBASE_PROJECT_ID,
-      "private_key_id":  process.env.FIREBASE_PRIVATE_KEY_ID,
-      "private_key":  process.env.FIREBASE_PRIVATE_KEY,
-      "client_email":  process.env.FIREBASE_CLIENT_EMAIL,
-      "client_id":  process.env.FIREBASE_CLIENT_ID,
-      "auth_uri":  process.env.FIREBASE_AUTH_URI,
-      "token_uri":  process.env.FIREBASE_TOKEN_URI,
-      "auth_provider_x509_cert_url":  process.env.FIREBASE_AUTH_PROVIDER,
-      "client_x509_cert_url":  process.env.FIREBASE_CERT_URL,
-      "universe_domain":  process.env.FIREBASE_UNIVERSE_DOMAIN
-    }
-    );
+    // const serviceAccount = require(
+    // );
 
     admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
+      credential: admin.credential.cert({
+        "type": process.env.FIREBASE_PROJECT_TYPE,
+        "project_id": process.env.FIREBASE_PROJECT_ID,
+        "private_key_id":  process.env.FIREBASE_PRIVATE_KEY_ID,
+        "private_key":  process.env.FIREBASE_PRIVATE_KEY,
+        "client_email":  process.env.FIREBASE_CLIENT_EMAIL,
+        "client_id":  process.env.FIREBASE_CLIENT_ID,
+        "auth_uri":  process.env.FIREBASE_AUTH_URI,
+        "token_uri":  process.env.FIREBASE_TOKEN_URI,
+        "auth_provider_x509_cert_url":  process.env.FIREBASE_AUTH_PROVIDER,
+        "client_x509_cert_url":  process.env.FIREBASE_CERT_URL,
+        "universe_domain":  process.env.FIREBASE_UNIVERSE_DOMAIN
+      }),
       databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL, // Your Firebase database URL
     });
   }
